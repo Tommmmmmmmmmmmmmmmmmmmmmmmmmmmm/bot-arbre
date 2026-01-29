@@ -48,3 +48,12 @@ client.on("interactionCreate", async (interaction) => {
   const file = new AttachmentBuilder("./arbre.png");
   await interaction.reply({ files: [file] });
 });
+
+// --- Mini serveur HTTP pour Render (obligatoire en Web Service) ---
+const http = require("http");
+const PORT = process.env.PORT || 3000;
+
+http.createServer((req, res) => {
+  res.writeHead(200, { "Content-Type": "text/plain" });
+  res.end("OK");
+}).listen(PORT, () => console.log("🌐 Web server listening on", PORT));
